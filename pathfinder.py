@@ -1,4 +1,5 @@
 from ast import Lambda
+import sys
 import time
 import pygame
 import math
@@ -232,6 +233,16 @@ def main(win, width):
                     algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
                     time.sleep(1)
                     showClearPath(lambda: draw(win, grid, ROWS, width), grid)
+            
+                if event.key == pygame.K_BACKSPACE:
+                    sys.exit()
+
+                if event.key == pygame.K_RETURN:
+                    for row in grid:
+                        for box in row:
+                            box.reset()
+                    start = None
+                    end = None
 
     pygame.quit()
 
